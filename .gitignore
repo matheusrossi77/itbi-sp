@@ -1,0 +1,6 @@
+*.db
+downloads/
+__pycache__/
+.streamlit/secrets.toml
+migrar_turso.py
+*.pyc
