@@ -12,7 +12,10 @@ import streamlit as st
 # ── Configuração de conexão ───────────────────────────────────────────────────
 
 _LOCAL_DB = Path(r"C:\Users\mathe\itbi_sp\itbi_sp.db")
-_USE_TURSO = "TURSO_URL" in st.secrets
+try:
+    _USE_TURSO = "TURSO_URL" in st.secrets and bool(st.secrets["TURSO_URL"])
+except Exception:
+    _USE_TURSO = False
 
 st.set_page_config(
     page_title="Consulta de transações - Imóveis São Paulo",
