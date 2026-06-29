@@ -15,7 +15,7 @@ _LOCAL_DB = Path(r"C:\Users\mathe\itbi_sp\itbi_sp.db")
 _USE_TURSO = "TURSO_URL" in st.secrets
 
 st.set_page_config(
-    page_title="ITBI São Paulo",
+    page_title="Consulta de transações - Imóveis São Paulo",
     page_icon="🏠",
     layout="wide",
 )
@@ -42,7 +42,7 @@ def _run_sql(sql: str, params: list = []) -> pd.DataFrame:
             elif isinstance(p, int):
                 args.append({"type": "integer", "value": str(p)})
             elif isinstance(p, float):
-                args.append({"type": "float", "value": str(p)})
+                args.append({"type": "float", "value": p})
             else:
                 args.append({"type": "text", "value": str(p)})
 
@@ -215,7 +215,7 @@ def query_data(where: str, params: list, limit: int = 50_000) -> pd.DataFrame:
 
 # ── Layout ────────────────────────────────────────────────────────────────────
 
-st.title("🏠 ITBI São Paulo — Consulta de Transações")
+st.title("🏠 Consulta de transações - Imóveis São Paulo")
 st.caption("Fonte: Prefeitura de SP")
 
 if not _USE_TURSO and not _LOCAL_DB.exists():
